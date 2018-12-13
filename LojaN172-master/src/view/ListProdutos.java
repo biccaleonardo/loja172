@@ -11,8 +11,8 @@ import java.util.List;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import model.Produto;
-import model.Produto;
+import model.Produtos;
+import model.Produtos;
 
 /**
  *
@@ -30,12 +30,12 @@ public class ListProdutos extends javax.swing.JInternalFrame {
     }
     
     public void carregarTabela() {
-        List<Produto> lista = ProdutosDAO.getProdutos();
+        List<Produtos> lista = ProdutosDAO.getProdutos();
         DefaultTableModel model = new DefaultTableModel();
         String[] colunas = {"Código do produto", "Produto", "Preço", "Quantidade", "Categoria"};
         model.setColumnIdentifiers(colunas);
 
-        for (Produto prod : lista) {
+        for (Produtos prod : lista) {
             Object[] linha = {
                 prod.getCodigo(),
                 prod.getNome(), 
@@ -175,7 +175,7 @@ public class ListProdutos extends javax.swing.JInternalFrame {
                     "Confirma a exclusão do Produto " + nome,
                     "Excluir Produto", JOptionPane.YES_NO_OPTION);
             if (resposta == JOptionPane.YES_OPTION) {
-                Produto produto = new Produto();
+                Produtos produto = new Produtos();
                 produto.setCodigo(codigo);
                 ProdutosDAO.excluir(produto);
                 carregarTabela();

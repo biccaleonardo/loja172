@@ -9,7 +9,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
-import model.Produto;
+import model.Categoria;
+
 
 /**
  *
@@ -17,7 +18,7 @@ import model.Produto;
  */
 public class CategoriaDAO {
     
-    public static void inserir(Produto categoria) {
+    public static void inserir(Categoria categoria) {
         String sql = "INSERT INTO categorias (nome)"
                 + " VALUES('" + categoria.getNome() + "' )";
         boolean retorno = Conexao.executar(sql);
@@ -26,7 +27,7 @@ public class CategoriaDAO {
                     "Erro ao inserir a categoria");
         }
     }
-     public static void editar(Produto categoria) {
+     public static void editar(Categoria categoria) {
         String sql = "UPDATE categorias SET "
                 + " nome = '" + categoria.getNome() + "' "
                 + " WHERE codigo = " + categoria.getCodigo();
@@ -36,7 +37,7 @@ public class CategoriaDAO {
         }
     }
      
-     public static void excluir(Produto categoria) {
+     public static void excluir(Categoria categoria) {
         String sql = "DELETE FROM categorias  "
                 + " WHERE codigo = " + categoria.getCodigo();
         boolean retorno = Conexao.executar(sql);
@@ -45,12 +46,12 @@ public class CategoriaDAO {
         }
     }
     
-    public static List<Produto> getCategorias() {
+    public static List<Categoria> getCategorias() {
         String sql = "SELECT codigo, nome "
         + " FROM categorias  "
         + " ORDER BY nome";
         
-        List<Produto> lista = new ArrayList<>();
+        List<Categoria> lista = new ArrayList<>();
         
         ResultSet rs = Conexao.consultar(sql);
         
@@ -58,7 +59,7 @@ public class CategoriaDAO {
             
             try{
                 while(rs.next() ){
-                   Produto cat = new Produto();
+                   Categoria cat = new Categoria();
                    cat.setCodigo(rs.getInt(1));
                    cat.setNome(rs.getString(2));
                    
@@ -70,7 +71,7 @@ public class CategoriaDAO {
         }
         return lista;
     }
-    public static Produto getCategoriaByCodigo(int codigo) {
+    public static Categoria getCategoriaByCodigo(int codigo) {
         String sql = "SELECT codigo, nome "
                 + " FROM categorias "
                 + " WHERE codigo = " + codigo;
@@ -82,7 +83,7 @@ public class CategoriaDAO {
             try{
                 
                 rs.next();
-                   Produto cat = new Produto();
+                   Categoria cat = new Categoria();
                    cat.setCodigo(rs.getInt(1));
                    cat.setNome(rs.getString(2));
                    

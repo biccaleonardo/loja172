@@ -207,7 +207,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void menuProdutosCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuProdutosCadastrarActionPerformed
         FrmProdutos tela = new FrmProdutos();
         jdpPainel.add(tela);
-        tela.setVisible(true);
+        tela.setVisible(true); 
+        
     }//GEN-LAST:event_menuProdutosCadastrarActionPerformed
 
     private void menuCategoriaListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCategoriaListarActionPerformed

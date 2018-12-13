@@ -10,7 +10,8 @@ import java.util.List;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import model.Produto;
+import model.Categoria;
+
 
 /**
  *
@@ -35,12 +36,12 @@ public class ListCategoria extends javax.swing.JInternalFrame {
     }
 
     public void carregarTabela() {
-        List<Produto> lista = CategoriaDAO.getCategorias();
+        List<Categoria> lista = CategoriaDAO.getCategorias();
         DefaultTableModel model = new DefaultTableModel();
         String[] colunas = {"Código", "Categoria"};
         model.setColumnIdentifiers(colunas);
 
-        for (Produto cat : lista) {
+        for (Categoria cat : lista) {
             Object[] linha = {
                 cat.getCodigo(),
                 cat.getNome()
@@ -152,7 +153,7 @@ public class ListCategoria extends javax.swing.JInternalFrame {
                     "Confirma a exclusão da categoria " + nome,
                     "Excluir Categoria", JOptionPane.YES_NO_OPTION);
             if (resposta == JOptionPane.YES_NO_OPTION) {
-                Produto categoria = new Produto();
+                Categoria categoria = new Categoria();
                 categoria.setCodigo(codigo);
                 CategoriaDAO.excluir(categoria);
                 carregarTabela();

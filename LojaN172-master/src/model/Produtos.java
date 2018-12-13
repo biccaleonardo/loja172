@@ -9,23 +9,23 @@ package model;
  *
  * @author 181720019
  */
-public class Produto {
+public class Produtos {
     private double preco;
     private int codigo;
     private String nome;
     private double quantidade;
-    private Produto categoria;
+    private Produtos categoria;
     
-    public Produto(){
+    public Produtos(){
     }
 
-    public Produto(int codigo, String nome) {
+    public Produtos(int codigo, String nome) {
         this.codigo = codigo;
         this.nome = nome;
     }
     
     
-    public Produto(double preco, int codigo, String nome, double quantidade ){
+    public Produtos(double preco, int codigo, String nome, double quantidade ){
         this.codigo = codigo;
         this.nome = nome;
         this.preco = preco;
@@ -64,11 +64,11 @@ public class Produto {
         this.quantidade = quantidade;
     }
     
-    public Produto getCategoria(){
+    public Produtos getCategoria(){
         return categoria;
     }
     
-    public void setCategoria(Produto categoria){
+    public void setCategoria(Produtos categoria){
         this.categoria = categoria;
     }
     

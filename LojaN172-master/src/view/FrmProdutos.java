@@ -10,8 +10,8 @@ import dao.ProdutosDAO;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
-import model.Produto;
-import model.Produto;
+import model.Produtos;
+import model.Categoria;
 
 /**
  *
@@ -19,7 +19,7 @@ import model.Produto;
  */
 public class FrmProdutos extends javax.swing.JInternalFrame {
     
-    private Produto produto;
+    private Produtos produto;
     private ListProdutos telaListProdutos;
     
 
@@ -28,8 +28,10 @@ public class FrmProdutos extends javax.swing.JInternalFrame {
      */
     public FrmProdutos() {
         initComponents();
+        lblCodigo.setVisible(false);
         produto = null;
         carregarCategorias(); 
+        
         
         
     }
@@ -50,11 +52,13 @@ public class FrmProdutos extends javax.swing.JInternalFrame {
         txtPreco.setText(String.valueOf(produto.getPreco()));
         txtQuantidade.setText(String.valueOf(produto.getQuantidade()));
         
+        
+        
         int codCategoria = produto.getCategoria().getCodigo();
         
-        List<Produto> categorias = CategoriaDAO.getCategorias();
-        for (int i =0; i< categorias.size(); i++){
-            if(categorias.get(i).getCodigo() == codCategoria){
+        List<Categoria> categoria = CategoriaDAO.getCategorias();
+        for (int i =0; i< categoria.size(); i++){
+            if(categoria.get(i).getCodigo() == codCategoria){
                 int posicao = i + 1;
                 cmbCategoria.setSelectedIndex(posicao);
                 break;
@@ -64,13 +68,15 @@ public class FrmProdutos extends javax.swing.JInternalFrame {
     }
     
     private void carregarCategorias(){
-        List<Produto> lista = CategoriaDAO.getCategorias();
+        List<Categoria> lista = CategoriaDAO.getCategorias();
         DefaultComboBoxModel model = new DefaultComboBoxModel();
         
-        Produto fake = new Produto(0, "Selecione...");
+        Categoria fake = new Categoria(0, "Selecione...");
+       
         model.addElement(fake);
-        for( Produto categoria : lista ){
-            model.addElement( categoria);
+        for( Categoria categoria : lista ){
+            model.addElement(categoria);
+            
         }
         cmbCategoria.setModel(model);
         
@@ -252,7 +258,7 @@ public class FrmProdutos extends javax.swing.JInternalFrame {
        String nome = txtNome.getText();
        String preco = txtPreco.getText();
        String qtd = txtQuantidade.getText();
-       Produto categoria = (Produto) cmbCategoria.getSelectedItem();
+       Produtos categoria = (Produtos) cmbCategoria.getSelectedItem();
        
        if(nome.isEmpty() || preco.isEmpty() || categoria.getCodigo() == 0 ){
            JOptionPane.showMessageDialog(this, "O campos nome, preço e categoria são obrigatórios!");
@@ -260,7 +266,7 @@ public class FrmProdutos extends javax.swing.JInternalFrame {
            
            boolean novo = false;
            if(produto == null ){
-               produto = new Produto();
+               produto = new Produtos();
                novo = true;
            }else{
              

@@ -9,15 +9,16 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
-import model.Produto;
-import model.Produto;
+import model.Categoria;
+import model.Produtos;
+
 
 /**
  *
  * @author 181720019
  */
 public class ProdutosDAO {
-    public static void inserir(Produto produtos) {
+    public static void inserir(Produtos produtos) {
         String sql = "INSERT INTO produtos "
                 + "(nome, preco, quantidade, codCategoria)"
                 + " VALUES('" + produtos.getNome() + "' , "
@@ -33,7 +34,7 @@ public class ProdutosDAO {
         }
     }
   
-    public static void editar(Produto produtos) {
+    public static void editar(Produtos produtos) {
         String sql = "UPDATE produtos SET "
                 + " nome = '" + produtos.getNome() + "' , "
                 + " preco = " + produtos.getPreco() + " , "
@@ -49,15 +50,15 @@ public class ProdutosDAO {
         }
     }
     
-  public static void excluir(Produto produtos) {
+  public static void excluir(Produtos produtos) {
         String sql = "DELETE FROM produtos "
                 + " WHERE codigo = " + produtos.getCodigo();
 
         Conexao.executar(sql);
     }
     
-    public static List<Produto> getProdutos() {
-        List<Produto> lista = new ArrayList<>();
+    public static List<Produtos> getProdutos() {
+        List<Produtos> lista = new ArrayList<>();
         
         String sql = "SELECT p.codigo, p.nome, p.preco, p.quantidade, p.codCategoria, c.nome "
         + " FROM produtos p "
@@ -73,17 +74,17 @@ public class ProdutosDAO {
             
             try{
                 while(rs.next() ){
-                   Produto pro = new Produto();
+                   Produtos pro = new Produtos();
                    pro.setCodigo(rs.getInt(1));
                    pro.setNome(rs.getString(2));
                    pro.setPreco(rs.getDouble(3));
                    pro.setQuantidade(rs.getDouble(4));
                    
-                   Produto cat = new Produto();
+                   Categoria cat = new Categoria();
                    cat.setCodigo(rs.getInt(5));
                    cat.setNome(rs.getString(6));
                    
-                   pro.setCategoria(cat);
+                  
                    lista.add(pro);
                 }
             }catch (Exception e) {
@@ -92,7 +93,7 @@ public class ProdutosDAO {
         }
         return lista;
     }
-    public static Produto getProdutosByCodigo(int codigo) {
+    public static Produtos getProdutosByCodigo(int codigo) {
         String sql = "SELECT p.codigo, p.nome, p.preco, p.quantidade, p.codCategoria, c.nome "
                 + " FROM produtos p "
                 + " INNER JOIN categorias c ON  p.codCategoria = c.codigo "
@@ -103,17 +104,17 @@ public class ProdutosDAO {
         if (rs != null) {
             try{
                 rs.next();
-                   Produto pro = new Produto();
+                   Produtos pro = new Produtos();
                    pro.setCodigo(rs.getInt(1));
                    pro.setNome(rs.getString(2));
                    pro.setPreco(rs.getDouble(3));
                    pro.setQuantidade(rs.getDouble(4));
                    
-                   Produto cat = new Produto();
+                   Categoria cat = new Categoria();
                    cat.setCodigo(rs.getInt(5));
                    cat.setNome(rs.getString(6));
                    
-                   pro.setCategoria(cat);
+                   
                    
                    return pro;
                 

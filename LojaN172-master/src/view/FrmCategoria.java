@@ -8,13 +8,14 @@ package view;
 import dao.CategoriaDAO;
 import java.util.List;
 import javax.swing.JOptionPane;
-import model.Produto;
+import model.Categoria;
+
 import model.Cidade;
 
 
 public class FrmCategoria extends javax.swing.JInternalFrame {
     
-    private Produto categoria;
+    private Categoria categoria;
     private ListCategoria telaListCategorias;
 
     /**
@@ -152,7 +153,7 @@ public class FrmCategoria extends javax.swing.JInternalFrame {
             boolean nova = false;
             if(categoria == null){
                 nova = true;
-                categoria = new Produto();
+                categoria = new Categoria();
             }
             categoria.setNome( nome );
             
