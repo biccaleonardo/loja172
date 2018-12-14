@@ -22,9 +22,10 @@ public class FrmCategoria extends javax.swing.JInternalFrame {
      * Creates new form FrmCategoria
      */
     public FrmCategoria() {
-        initComponents();
+        initComponents(); 
+        lblCodigo.setVisible(false);
         lblNome.setVisible(true);
-        lblCodigo.setVisible(true);
+        
     }
     
     
@@ -156,9 +157,12 @@ public class FrmCategoria extends javax.swing.JInternalFrame {
                 categoria = new Categoria();
             }
             categoria.setNome( nome );
+            categoria.setCodigo(0);
             
             if(nova){
                 CategoriaDAO.inserir(categoria);
+                categoria = null; 
+                txtNome.setText("");
             }else{
                 CategoriaDAO.editar(categoria);
                 telaListCategorias.carregarTabela();
@@ -166,8 +170,8 @@ public class FrmCategoria extends javax.swing.JInternalFrame {
             }
             
         
-            categoria.setNome(nome);
-            categoria.setCodigo(0);
+            
+            
             
        
     }//GEN-LAST:event_btnSalvarActionPerformed

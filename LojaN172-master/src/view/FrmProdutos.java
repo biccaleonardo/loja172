@@ -46,15 +46,14 @@ public class FrmProdutos extends javax.swing.JInternalFrame {
     }
   
     
-    public void carregarFormulario(){ 
+    public void carregarFormulario(){
+    
         lblCodigo.setText( String.valueOf(produto.getCodigo()) );
         txtNome.setText(produto.getNome());
         txtPreco.setText(String.valueOf(produto.getPreco()));
         txtQuantidade.setText(String.valueOf(produto.getQuantidade()));
         
-        
-        
-        int codCategoria = produto.getCategoria().getCodigo();
+          int codCategoria = produto.getCategoria().getCodigo();
         
         List<Categoria> categoria = CategoriaDAO.getCategorias();
         for (int i =0; i< categoria.size(); i++){
@@ -258,7 +257,7 @@ public class FrmProdutos extends javax.swing.JInternalFrame {
        String nome = txtNome.getText();
        String preco = txtPreco.getText();
        String qtd = txtQuantidade.getText();
-       Produtos categoria = (Produtos) cmbCategoria.getSelectedItem();
+       Categoria categoria = (Categoria) cmbCategoria.getSelectedItem();
        
        if(nome.isEmpty() || preco.isEmpty() || categoria.getCodigo() == 0 ){
            JOptionPane.showMessageDialog(this, "O campos nome, preço e categoria são obrigatórios!");

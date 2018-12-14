@@ -44,7 +44,7 @@ public class ClienteDAO {
         String data = "" + cliente.getNascimento().get(Calendar.YEAR)
                 + "-" + (cliente.getNascimento().get(Calendar.MONTH) + 1)
                 + "-" + cliente.getNascimento().get(Calendar.DAY_OF_MONTH);
-        String sql = "UPDATE SET clientes "
+        String sql = "UPDATE clientes SET "
                 + " nome     = '" + cliente.getNome() + "', "
                 + " telefone = '" + cliente.getTelefone() + "', "
                 + " cpf      = '" + cliente.getCpf() + "', "
@@ -103,7 +103,7 @@ public class ClienteDAO {
                     cliente.setSexo(rs.getString(8));
 
                     Calendar nascimento = Calendar.getInstance();
-                    nascimento.set(rs.getInt(15), rs.getInt(14), rs.getInt(13));
+                    nascimento.set(rs.getInt(15), (rs.getInt(14)-1), rs.getInt(13));
 
                     cliente.setNascimento(nascimento);
                     cliente.setCidade(cidade);

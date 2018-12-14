@@ -14,7 +14,7 @@ public class Produtos {
     private int codigo;
     private String nome;
     private double quantidade;
-    private Produtos categoria;
+    private Categoria categoria;
     
     public Produtos(){
     }
@@ -64,11 +64,11 @@ public class Produtos {
         this.quantidade = quantidade;
     }
     
-    public Produtos getCategoria(){
+    public Categoria getCategoria(){
         return categoria;
     }
     
-    public void setCategoria(Produtos categoria){
+    public void setCategoria(Categoria categoria){
         this.categoria = categoria;
     }
     

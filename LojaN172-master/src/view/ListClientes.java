@@ -200,14 +200,14 @@ public class ListClientes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbnExcluirActionPerformed
 
     private void jbnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbnEditarActionPerformed
-        int linha = tableClientes.getSelectedRow();
+          int linha = tableClientes.getSelectedRow();
         if(linha < 0){
-            JOptionPane.showMessageDialog(this,"Um cliente deve ser selecionado!");
+            JOptionPane.showMessageDialog(this, "Um cliente deve ser selecionado!");
         }else{
-            int codigo = (int) tableClientes.getValueAt(linha,0);
-            FrmClientes tela = new FrmClientes(codigo, this);
-            this.jdpTelaInicial.add(tela);
-            tela.setVisible(true);
+        int codigo = (int) tableClientes.getValueAt(linha, 0); 
+        FrmClientes tela = new FrmClientes(codigo, this);
+        jdpTelaInicial.add(tela);
+        tela.setVisible(true);
     }//GEN-LAST:event_jbnEditarActionPerformed
     
     }

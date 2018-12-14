@@ -11,6 +11,7 @@ import java.util.List;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import model.Categoria;
 import model.Produtos;
 import model.Produtos;
 
@@ -31,6 +32,7 @@ public class ListProdutos extends javax.swing.JInternalFrame {
     
     public void carregarTabela() {
         List<Produtos> lista = ProdutosDAO.getProdutos();
+        List<Categoria> lista2 = CategoriaDAO.getCategorias();
         DefaultTableModel model = new DefaultTableModel();
         String[] colunas = {"Código do produto", "Produto", "Preço", "Quantidade", "Categoria"};
         model.setColumnIdentifiers(colunas);

@@ -14,6 +14,10 @@ public class Categoria {
     private int codigo;
     private String nome;
     
+     public String toString() {
+        return nome; //To change body of generated methods, choose Tools | Templates.
+    }
+    
     
     
 public Categoria() { 

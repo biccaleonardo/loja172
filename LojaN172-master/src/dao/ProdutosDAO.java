@@ -35,7 +35,7 @@ public class ProdutosDAO {
     }
   
     public static void editar(Produtos produtos) {
-        String sql = "UPDATE produtos SET "
+        String sql = "UPDATE produtos SET  "
                 + " nome = '" + produtos.getNome() + "' , "
                 + " preco = " + produtos.getPreco() + " , "
                 + " quantidade = " + produtos.getQuantidade() + " , "
@@ -84,8 +84,10 @@ public class ProdutosDAO {
                    cat.setCodigo(rs.getInt(5));
                    cat.setNome(rs.getString(6));
                    
+                   pro.setCategoria(cat);
                   
                    lista.add(pro);
+                   
                 }
             }catch (Exception e) {
                 
@@ -114,20 +116,20 @@ public class ProdutosDAO {
                    cat.setCodigo(rs.getInt(5));
                    cat.setNome(rs.getString(6));
                    
-                   
+                   pro.setCategoria(cat);
                    
                    return pro;
                 
             }catch (Exception e) {
-                return null;
+            
             }
          
-        }else{
-            return null;
         }
-    }
+            return null;
+        
+    
 
   
-    
+    }
     
 }
